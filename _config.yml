@@ -1,0 +1,11 @@
+name: Your Jekyll Site
+description: Blogging about things
+meta_description: "Blogging about things on your new Jekyll site."
+
+markdown: redcarpet
+highlighter: pygments
+logo: false
+paginate: 5
+baseurl: /
+domain_name: 'http://yourblog-domain.com'
+disqus_name: 'disqus_forum_name'
