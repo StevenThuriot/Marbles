@@ -5,6 +5,7 @@ meta_description: "Blogging about things on your new Jekyll site."
 markdown: redcarpet
 highlighter: pygments
 logo: false
+cover: false
 paginate: 5
 baseurl: /
 domain_name: 'http://yourblog-domain.com'
