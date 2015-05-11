@@ -8,4 +8,5 @@ logo: false
 paginate: 5
 baseurl: /
 domain_name: 'http://yourblog-domain.com'
-disqus_name: 'disqus_forum_name'
+disqus: 'disqus_forum_name'
+profile_picture: '/assets/images/profile.png'
