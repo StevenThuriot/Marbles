@@ -1,6 +1,7 @@
 name: Your Jekyll Site
 description: Blogging about things
 meta_description: "Blogging about things on your new Jekyll site."
+url: 'http://yourblog-domain.com'
 
 markdown: redcarpet
 highlighter: pygments
@@ -8,6 +9,5 @@ logo: false
 cover: false
 paginate: 5
 baseurl: /
-domain_name: 'http://yourblog-domain.com'
 disqus: 'disqus_forum_name'
 profile_picture: '/assets/images/profile.png'
