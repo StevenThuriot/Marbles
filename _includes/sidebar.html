@@ -1,0 +1,15 @@
+<header id="orbs-bar" class="sidebar{% if page.post_class %} no-cover{% else %} wide{% if site.cover %}" style="background-image: url('{{ site.cover }}'){% endif %}{% endif %}">
+
+    <nav id="site-head">
+        <div id="site-head-logo">
+            <a id="blog-logo" href="{{ site.url }}"><img src="{{ site.logo }}" alt="{{ site.name }}" title="{{ site.data.language.home }}"></a>
+        </div>
+
+        <div class="blog-links">
+            {% for link in site.data.navigation %}
+            <a class="icon-{{ link.icon }}" role="presentation" href="{{ site.url }}/{{ link.url }}" title="{{ link.name }}"></a>
+            {% endfor %}
+            <a class="icon-feed" role="presentation" href="{{ site.url }}/rss/" target="_blank" title="{{ site.data.language.subscribe }}"></a>
+        </div>
+    </nav>
+</header>
