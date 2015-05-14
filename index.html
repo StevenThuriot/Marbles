@@ -1,0 +1,35 @@
+---
+layout: default
+title: Home
+---
+
+<main id="content" class="narrow-content" role="main">
+
+    <div class="extra-pagination inner">
+        {% include pagination.html %}
+    </div>
+
+    {% for post in paginator.posts %}
+
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        </header>
+        <section class="post-excerpt">
+            {{ post.excerpt }} <a class="read-more" href="{{ post.url }}">&raquo;</a>
+        </section>
+        <footer class="post-meta">
+            {% for category in post.categories %}
+                <a href="/tag/{{ category | slugify }}/">{{ category }}</a>{% if forloop.last == false %}, {% endif %}
+            {% endfor %}            
+            <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">
+                {{ post.date | date: "%-d %B %Y" }}
+            </time> 
+        </footer>
+    </article>
+
+    {% endfor %}
+
+    {% include pagination.html %}
+
+</main>

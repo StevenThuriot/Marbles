@@ -10,5 +10,5 @@ cover: false
 paginate: 5
 baseurl: /
 permalink: /:title/
-disqus: 'disqus_forum_name'
+disqus: false
 profile_picture: '/assets/images/profile.png'
