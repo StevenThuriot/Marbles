@@ -12,3 +12,5 @@ baseurl: /
 permalink: /:title/
 disqus: false
 profile_picture: '/assets/images/profile.png'
+
+exclude: [README.md, LICENSE, vendor]
