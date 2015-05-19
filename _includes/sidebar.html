@@ -9,7 +9,7 @@
             {% for link in site.data.navigation %}
             <a class="icon-{{ link.icon }}" role="presentation" href="{{ site.url }}/{{ link.url }}" title="{{ link.name }}"></a>
             {% endfor %}
-            <a class="icon-feed" role="presentation" href="{{ site.url }}/rss/" target="_blank" title="{{ site.data.language.subscribe }}"></a>
+            <a class="icon-feed" role="presentation" href="{{ site.url }}/rss.xml" target="_blank" title="{{ site.data.language.subscribe }}"></a>
         </div>
     </nav>
 </header>
