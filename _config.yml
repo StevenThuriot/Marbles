@@ -4,12 +4,14 @@ meta_description: "Blogging about things on your new Jekyll site."
 url: 'http://yourblog-domain.com'
 
 markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "superscript"]
 highlighter: pygments
 logo: false
 cover: false
 paginate: 5
 baseurl: /
-permalink: /:title/
+permalink: /:title
 disqus: false
 profile_picture: '/assets/images/profile.png'
 
