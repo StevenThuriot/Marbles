@@ -1,0 +1,72 @@
+---
+layout: default
+archive: false
+post_class: post-template
+---
+
+{% if page.cover %}
+<div class="main-header post-head" style="background-image: url({{ page.cover }})"></div>
+{% endif %}
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <section class="post-meta">                
+                <time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y-%m-%d" }}</time>               
+                {% if page.categories.size > 0 %} on {% endif %}
+                {% for category in page.categories %}
+                    <a href="/tag/{{ category | slugify }}/">{{ category }}</a>{% if forloop.last == false %}, {% endif %}
+                {% endfor %}
+            </section>
+        </header>
+        
+        <section class="post-content">
+            {{content}}
+        </section>
+
+        {% if page.archive %}
+        <section class="archive">
+            <h5>Archive</h5>
+            <ul>
+                {% for post in site.posts %}
+                    <li><span>{{ post.date | date_to_string }}</span>  <a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% endfor %}    
+            </ul>
+        </section>
+        {% endif %}
+
+        <footer class="post-footer{% if site.author and site.author.cover %} with-cover" style="background-image: url({{ site.author.cover }}){% endif %}">
+        {% if site.author %}
+            {% if site.author.image %}
+            <figure class="author-image">
+                <a class="img" href="{{ site.url }}/author/{{ site.author.name | slugify }}" style="background-image: url({{ site.author.image }})">
+                <span class="hidden">{{ site.author.name }}'s Picture</span></a>
+            </figure>
+            {% endif %}
+            
+            <section class="author">
+                <h4><a href="{{ site.url }}/author/{{ site.author.name | slugify }}">{{ site.author.name }}</a></h4>
+                
+                {% if site.author.bio %}
+                    <p>{{ site.author.bio }}</p>
+                {% else %}
+                    <p>Read <a href="{{ site.url }}/author/{{ site.author.name | slugify }}">more posts</a> by this author.</p>
+                {% endif %}
+                
+                <div class="author-meta">
+                    {% if site.author.location %}<span class="author-location icon-location">{{ site.author.location }}</span>{% endif %}
+                    {% if site.author.website %}<span class="author-link icon-link"><a href="{{ site.author.website }}">{{ site.author.website }}</a></span>{% endif %}
+                </div>
+            </section>
+        {% endif %}            
+        </footer>
+
+    </article>
+            
+    {% if site.disqus %}
+        {% include disqus.html %}
+    {% endif %}
+</main>
