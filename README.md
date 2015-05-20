@@ -2,7 +2,7 @@
 [Orbs Theme](//github.com/StevenThuriot/Orbs/) ported to Jekyll, built to run on my [website](http://steven.thuriot.be/).
 
 ##Features
-* Configurable responsive navigational sidebar, which supports for the navigation system.
+* Configurable responsive navigational sidebar, which supports the navigation system.
 * Code highlighting
 * Comments using Disqus.
 * Extra Icons
