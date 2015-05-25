@@ -6,8 +6,10 @@ paginate: 5
 baseurl: /
 permalink: /:title
 
-exclude: [README.md, LICENSE, vendor]
+exclude: [README.md, LICENSE, vendor, Gemfile]
 
+gems:
+  - jekyll-sitemap
 
 
 
