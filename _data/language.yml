@@ -2,7 +2,7 @@ English:
   home: Home
   subscribe: Subscribe
   subscribeTo: Subscribe To
-  on: "on"
+  about: "on"
   readMoreByThisAuthor: Read more posts by this author
   picture: "'s Picture"
   
@@ -10,7 +10,7 @@ Dutch:
   home: Start
   subscribe: Abonneer
   subscribeTo: Abonneer op
-  on: over  
+  about: over  
   readMoreByThisAuthor: Lees meer berichten van deze auteur
   picture: "'s Foto"
   

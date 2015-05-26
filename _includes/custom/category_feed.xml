@@ -1,0 +1,29 @@
+---
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+	<channel>
+		<title><![CDATA[{{ site.name | cdata_escape }} &mdash; {{ page.category | cdata_escape }}]]></title>
+		<description><![CDATA[{{ site.description | cdata_escape }}]]></description>
+		<link>{{ site.url }}</link>
+		<link href="{{ site.url }}/tag/{{ page.category }}/rss/" rel="self" type="application/rss+xml" />
+		<ttl>60</ttl>
+		{% for post in site.categories[page.category] limit:10 %}
+		<item>
+			<title><![CDATA[{{ post.title | cdata_escape }}]]></title>
+			{% if post.excerpt %}
+			<description><![CDATA[{{ post.excerpt | cdata_escape }}]]></description>
+			{% else %}
+			<description><![CDATA[{{ post.content | cdata_escape }}]]></description>
+			{% endif %}
+			<link>{{ site.url }}{{ post.url }}</link>
+			<guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+			<pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
+			{% if post.cover %}
+			<media:content url="{{ post.cover }}" medium="image"/>
+			{% endif %}
+			<content:encoded><![CDATA[{{ post.content | expand_urls: site.url | markdownify | cdata_escape }}]]></content:encoded>
+		</item>
+		{% endfor %}
+	</channel>
+</rss>

@@ -1,32 +1,7 @@
-<!DOCTYPE html>
-<html>
-<!-- Theme by Steven Thuriot - https://github.com/StevenThuriot/Marbles -->
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+---
+layout: base
+---
 
-    <title>{{ site.name }} &mdash; {{ site.description }}</title>
-    <meta name="description" content="{{ site.meta_description}}" />
+{% include sidebar.html %}
 
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic%7CMontserrat:400,700' rel='stylesheet' type='text/css'>
-	
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
-</head>
-<body class="{% if page.post_class %}{{page.post_class}}{% else %}home-template{% endif %}">
-
-	{% include sidebar.html %}
-
-    {{ content }}
-	
-	<footer class="site-footer clearfix{% if page.post_class %} wide{% endif %}">
-		<section class="copyright"><a href="{{ site.url }}">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }}</section>
-	</footer>
-    
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-
-	</body>
-</html>
+{{ content }}
