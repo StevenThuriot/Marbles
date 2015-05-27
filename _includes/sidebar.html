@@ -7,7 +7,8 @@
 
         <div class="blog-links">
             {% for link in site.data.navigation %}
-            <a class="icon-{{ link.icon }}" role="presentation" href="{{ site.url }}/{{ link.url }}" title="{{ link.name }}"></a>
+            {% capture pageUrl %}{{link.url}}/index.html{% endcapture %}
+            <a class="icon-{{ link.icon }}{% if pageUrl == page.url %} current-orb{% endif %}" role="presentation" href="{{ link.url }}" {% if link.target %}target="{{link.target}}"{% endif %} title="{{ link.name }}"></a>
             {% endfor %}
             {% if subscription %}
             <a class="icon-feed" role="presentation" href="{{subscriptionUrl}}" target="_blank" title="{{ language.subscribeTo }} {{ subscription }}"></a>
