@@ -9,9 +9,8 @@
             {% for link in site.data.navigation %}
             <a class="icon-{{ link.icon }}" role="presentation" href="{{ site.url }}/{{ link.url }}" title="{{ link.name }}"></a>
             {% endfor %}
-            {% assign sub = subscription %}
-            {% if sub %}
-            <a class="icon-feed" role="presentation" href="{{subscriptionUrl}}" target="_blank" title="{{ language.subscribe }} to {{ sub }}"></a>
+            {% if subscription %}
+            <a class="icon-feed" role="presentation" href="{{subscriptionUrl}}" target="_blank" title="{{ language.subscribeTo }} {{ subscription }}"></a>
             {% else %}
             <a class="icon-feed" role="presentation" href="{{ site.url }}/rss/" target="_blank" title="{{ language.subscribe }}"></a>
             {% endif %}
