@@ -178,7 +178,7 @@ module Jekyll
     safe true
     priority :low
 
-    CATEGORY_DIR = 'tag'
+    CATEGORY_DIR = 'category'
 
     def generate(site)
       site.write_category_indexes
@@ -235,12 +235,9 @@ module Jekyll
       result
     end
 
+    def titleize(value)
+        value.split(/(\W)/).map(&:capitalize).join
+    end
   end
 
-end
-
-class String
-  def titleize
-    split(/(\W)/).map(&:capitalize).join
-  end
 end

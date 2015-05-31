@@ -2,7 +2,7 @@
 layout: base
 ---
 
-{% assign subscription = page.category | capitalize %}
+{% assign subscription = page.category | titleize %}
 {% capture subscriptionUrl %}{{ site.url }}/tag/{{ page.category }}/rss/{% endcapture %}
 
 {% include sidebar.html %}
@@ -17,7 +17,7 @@ layout: base
 {% if site.data.tags[slugCategory].title %}
     {% assign title = site.data.tags[slugCategory].title %}
 {% else %}
-    {% capture title %}{{ page.category | capitalize }}{% endcapture %}
+    {% capture title %}{{ page.category | titleize }}{% endcapture %}
 {% endif %}
 
 
@@ -43,7 +43,7 @@ layout: base
         <footer class="post-meta">
             {% assign categories = post.categories | sort %}
             {% for category in categories %}
-                <a href="/tag/{{ category | slugify }}/">{{ category | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
+                <a href="/tag/{{ category | slugify }}/">{{ category | titleize }}</a>{% if forloop.last == false %}, {% endif %}
             {% endfor %}
             <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date: "%-d %B %Y" }}</time>               
         </footer>

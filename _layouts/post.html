@@ -21,7 +21,7 @@ post_class: post-template
                 {% if page.categories.size > 0 %} {{ language.about }} {% endif %}
                 {% assign categories = page.categories | sort %}
                 {% for category in categories %}
-                    <a href="/tag/{{ category | slugify }}/">{{ category | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
+                    <a href="/tag/{{ category | slugify }}/">{{ category | titleize }}</a>{% if forloop.last == false %}, {% endif %}
                 {% endfor %}
             </section>
         </header>
