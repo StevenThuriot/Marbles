@@ -1,7 +1,7 @@
 {% if orbsCover == nil or orbsCover == false %}
     {% assign orbsCover = site.cover %}
 {% endif %}
-<header id="orbs-bar" class="sidebar{% if page.noCover %} no-cover{% else %} wide{% if orbsCover %}" style="background-image: url('{{ orbsCover }}'){% endif %}{% endif %}">
+<header id="orbs-bar" class="sidebar{% if page.subCover %} no-cover{% else %} wide{% if orbsCover %}" style="background-image: url('{{ orbsCover }}'){% endif %}{% endif %}">
 	{% assign language = site.data.language[site.language] %}
     <nav id="site-head">
         {% if site.logo %}
