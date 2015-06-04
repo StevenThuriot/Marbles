@@ -18,11 +18,11 @@
 	
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 </head>
-<body class="{% if page.post_class %}{{page.post_class}}{% else %}{% if paginator.page != 1 %}archive-template{% else %}home-template{% endif %}{% endif %}">
+<body class="{% if paginator and paginator.page != 1 %}archive-template{% else %}{% if page.templateType %}{{ page.templateType }}{% else %}home{% endif %}-template{% endif %}">
 
     {{ content }}
 	
-	<footer class="site-footer clearfix{% if page.post_class %} wide{% endif %}">
+	<footer class="site-footer clearfix{% if page.noCover %} wide{% endif %}">
 		<section class="copyright"><a href="{{ site.url }}">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }}</section>
 	</footer>
     

@@ -1,7 +1,8 @@
 ---
 layout: default
 archive: false
-post_class: post-template
+templateType: post
+noCover: true
 ---
 
 {% assign language = site.data.language[site.language] %}
@@ -42,15 +43,17 @@ post_class: post-template
         {% endif %}
 
         {% if page.author %}
-            {% assign author = site.data.authors[page.author] %}
+            {% assign authorSlug = page.author %}
         {% elsif site.author %}
-            {% assign author = site.data.authors[site.author] %}
+            {% assign authorSlug = site.author %}
         {% else %}
-            {% assign author = false %}
+            {% assign authorSlug = false %}
         {% endif %}
         
         <footer class="post-footer{% if author and author.cover %} with-cover" style="background-image: url({{ author.cover }}){% endif %}">
-        {% if author %}
+        {% if authorSlug %}
+            {% assign author = site.data.authors[authorSlug] %}
+            {% if author %}
             {% if author.image %}
             <figure class="author-image">
                 <a class="img" href="{{ site.url }}/author/{{ author.name | slugify }}" style="background-image: url({{ author.image }})">
@@ -59,12 +62,12 @@ post_class: post-template
             {% endif %}
             
             <section class="author">
-                <h4><a href="{{ site.url }}/author/{{ author.name | slugify }}">{{ author.name }}</a></h4>
+                <h4><a href="{{ site.url }}/author/{{ authorSlug }}">{{ author.name }}</a></h4>
                 
                 {% if author.bio %}
                     <p>{{ author.bio }}</p>
                 {% else %}
-                    <p><a href="{{ site.url }}/author/{{ author.name | slugify }}">{{ language.readMoreByThisAuthor }}</a>.</p>
+                    <p><a href="{{ site.url }}/author/{{ authorSlug }}">{{ language.readMoreByThisAuthor }}</a>.</p>
                 {% endif %}
                 
                 <div class="author-meta">
@@ -72,7 +75,8 @@ post_class: post-template
                     {% if author.website %}<span class="author-link icon-link"><a href="{{ author.website }}">{{ author.website }}</a></span>{% endif %}
                 </div>
             </section>
-        {% endif %}            
+        {% endif %}   
+        {% endif %}             
         </footer>
 
     </article>
