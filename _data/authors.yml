@@ -1,6 +1,7 @@
-AuthorId:
+author-slug:
   name : Your Name
   location: Your Country
   bio: Short note about yourself
   image: http://youravatar.jpg
   cover: http://yourcover.jpg
+  website: http://site.be

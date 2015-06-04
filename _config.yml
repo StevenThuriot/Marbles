@@ -6,6 +6,8 @@ paginate: 5
 baseurl: /
 permalink: /:title
 paginate_path: "/page/:num/"
+author_dir: author
+category_dir: tag
 
 exclude: [README.md, LICENSE, vendor, Gemfile]
 
@@ -25,7 +27,7 @@ url: http://yourblog-domain.com
 logo: false
 cover: false
 disqus: false
-author: AuthorId
+author: author-slug
 language: English
 
 # ########################### #
