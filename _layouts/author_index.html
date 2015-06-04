@@ -1,0 +1,53 @@
+---
+layout: base
+templateType: author
+---
+
+{% assign subscription = page.author.name | titleize %}
+{% capture subscriptionUrl %}{{ site.url }}/author/{{ page.slug }}/rss/{% endcapture %}
+
+{% if page.author.cover %}
+    {% assign orbsCover = page.author.cover %}
+{% endif %}
+
+{% include sidebar.html %}
+{% assign author = page.author %}
+{% assign index = true %}
+
+<main class="narrow-content" role="main">    
+    <section class="author-profile inner">
+        {% if author.image %}            
+        <figure class="author-image">
+            <div class="img" style="background-image: url({{ author.image }})"><span class="hidden">{{ author.name }}{{ language.picture }}</span></div>
+        </figure>
+        {% endif %}
+        <h1 class="author-title">{{ author.name }}</h1>
+        <h2 class="author-bio">{{ author.bio }}</h2>
+        
+        <div class="author-meta">
+            {% if author.location %}<span class="author-location icon-location">{{ author.location }}</span>{% endif %}
+            {% if author.website %}<span class="author-link icon-link"><a href="{{ author.website }}">{{author.website}}</a></span>{% endif %}
+            <span class="author-stats"><i class="icon-stats"></i> {{ page.posts.size}} post{% if page.posts.size != 1 %}s{% endif %}</span>
+        </div>
+    </section>
+        
+  {% for post in page.posts %}    
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        </header>
+        <section class="post-excerpt">
+            {{ post.excerpt | markdownify }} <a class="read-more" href="{{ post.url }}">&raquo;</a>
+        </section>
+        <footer class="post-meta">
+            {% assign categories = post.categories | sort %}
+            {% for category in categories %}
+                <a href="/tag/{{ category | slugify }}/">{{ category | titleize }}</a>{% if forloop.last == false %}, {% endif %}
+            {% endfor %}            
+            <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">
+                {{ post.date | date: "%-d %B %Y" }}
+            </time> 
+        </footer>
+    </article>
+  {% endfor %}
+</main>
