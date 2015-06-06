@@ -1,5 +1,5 @@
 module Jekyll
-
+    
   class AuthorIndex < Page
 
     def initialize(site, base, slug, author)
@@ -12,6 +12,40 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'author_index.html')
       self.data['slug'] = slug
       self.data['author'] = author
+      self.data['dir'] = dir
+      self.data['title'] = "#{author['name']}"
+      
+      posts = Array.new
+      isMain = site.config['author'] == slug
+
+      site.posts.each do |post|
+          if post.data["author"]
+             if isMain or post.data["author"] == slug
+                 posts.push post
+             end
+          elsif isMain
+              posts.push post
+          end
+      end
+      
+      self.data['posts'] = posts
+    end
+  end
+
+
+  class AuthorFeed < Page
+
+    def initialize(site, base, slug, author)
+      @site = site
+      @base = base
+      @dir  = File.join((site.config['author_dir'] || 'authors'), slug)
+      @name = 'rss/index.xml'
+     
+      self.process(@name)
+      self.read_yaml(File.join(base, '_includes', 'custom'), 'author_feed.xml')
+      self.data['slug'] = slug
+      self.data['author'] = author
+      self.data['dir'] = dir
       self.data['title'] = "#{author['name']}"
       
       posts = Array.new
@@ -35,12 +69,21 @@ module Jekyll
 
   class Site
 
-    def write_author_index(slug, author)      
+    def write_author_index(slug, author)  
+        
       index = AuthorIndex.new(self, self.source, slug, author)
       index.render(self.layouts, site_payload)
       index.write(self.dest)
-      
-      #TODO: Author feed
+        
+      # Record that this page has been added, otherwise Site::cleanup will remove it.
+      self.pages << index
+    end
+
+    def write_author_feed(slug, author)  
+        
+      index = AuthorFeed.new(self, self.source, slug, author)
+      index.render(self.layouts, site_payload)
+      index.write(self.dest)
         
       # Record that this page has been added, otherwise Site::cleanup will remove it.
       self.pages << index
@@ -50,7 +93,8 @@ module Jekyll
       if self.layouts.key? 'author_index'      
         self.posts.each do |post|
             slug = post.data["author"] || self.config['author']
-            author = self.data['authors'][slug]            
+            author = self.data['authors'][slug]           
+            self.write_author_feed(slug, author)       
             self.write_author_index(slug, author)
         end
       else
