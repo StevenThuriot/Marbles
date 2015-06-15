@@ -20,6 +20,7 @@ module Jekyll
       self.data['author'] = author
       self.data['dir'] = dir
       self.data['title'] = "#{author['name']}"
+      self.data['subscriptionUrl'] = site.config['url'] + '/' + (site.config['author_dir'] || 'authors') + '/' + slug + '/rss/'
     end
   end
 

@@ -4,7 +4,7 @@ templateType: tag
 ---
 
 {% assign subscription = page.category | titleize %}
-{% capture subscriptionUrl %}{{ site.url }}/tag/{{ page.category }}/rss/{% endcapture %}
+{% assign subscriptionUrl = page.subscriptionUrl %}
 
 {% include sidebar.html %}
 
@@ -27,13 +27,16 @@ templateType: tag
 {% endif %}
 
 <main class="narrow-content" role="main">
+    <div class="extra-pagination inner">
+        {% include pagination.html %}
+    </div>
 
     <div class="main-header-content inner">
         <h1 class="page-title">{{ title }}</h1>
-        <h2 class="page-description">A {{site.categories[page.category].size}}-post collection</h2>
+        <h2 class="page-description">A {{paginator.total_posts}}-post collection</h2>
     </div>
     
-    {% for post in site.categories[page.category] %}
+    {% for post in paginator.posts %}    
     <article class="post">
         <header class="post-header">
             <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
@@ -50,4 +53,6 @@ templateType: tag
         </footer>
     </article>
     {% endfor %}
+    
+  {% include pagination.html %}
 </main>

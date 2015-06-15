@@ -4,7 +4,7 @@ templateType: author
 ---
 
 {% assign subscription = page.author.name | titleize %}
-{% capture subscriptionUrl %}{{ site.url }}/author/{{ page.slug }}/rss/{% endcapture %}
+{% assign subscriptionUrl = page.subscriptionUrl %}
 
 {% if page.author.cover %}
     {% assign orbsCover = page.author.cover %}
