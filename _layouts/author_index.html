@@ -49,7 +49,7 @@ templateType: author
                 <a href="/tag/{{ category | slugify }}/">{{ category | titleize }}</a>{% if forloop.last == false %}, {% endif %}
             {% endfor %}            
             <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">
-                {{ post.date | date: "%-d %B %Y" }}
+                {{ post.date | date: "%d %B %Y" }}
             </time> 
         </footer>
     </article>
