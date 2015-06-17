@@ -22,7 +22,7 @@ subCover: true
                 {% if page.categories.size > 0 %} {{ language.about }} {% endif %}
                 {% assign categories = page.categories | sort %}
                 {% for category in categories %}
-                    <a href="/tag/{{ category | slugify }}/">{{ category | titleize }}</a>{% if forloop.last == false %}, {% endif %}
+                <a href="{{ site.url }}/{{ site.category_dir || 'categories' }}/{{ category | slugify }}/">{{ category | titleize }}</a>{% if forloop.last == false %}, {% endif %}
                 {% endfor %}
             </section>
         </header>
@@ -56,18 +56,18 @@ subCover: true
             {% if author %}
             {% if author.image %}
             <figure class="author-image">
-                <a class="img" href="{{ site.url }}/author/{{ author.name | slugify }}" style="background-image: url({{ author.image }})">
+                <a class="img" href="{{ site.url }}/{{ site.author_dir || 'authors' }}/{{ authorSlug }}" style="background-image: url({{ author.image }})">
                 <span class="hidden">{{ author.name }}{{ language.picture }}</span></a>
             </figure>
             {% endif %}
             
             <section class="author">
-                <h4><a href="{{ site.url }}/author/{{ authorSlug }}">{{ author.name }}</a></h4>
+                <h4><a href="{{ site.url }}/{{ site.author_dir || 'authors' }}/{{ authorSlug }}">{{ author.name }}</a></h4>
                 
                 {% if author.bio %}
                     <p>{{ author.bio }}</p>
                 {% else %}
-                    <p><a href="{{ site.url }}/author/{{ authorSlug }}">{{ language.readMoreByThisAuthor }}</a>.</p>
+                    <p><a href="{{ site.url }}/{{ site.author_dir || 'authors' }}/{{ authorSlug }}">{{ language.readMoreByThisAuthor }}</a>.</p>
                 {% endif %}
                 
                 <div class="author-meta">
