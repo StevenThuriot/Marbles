@@ -12,9 +12,9 @@
 		<item>
 			<title><![CDATA[{{ post.title }}]]></title>
 			{% if post.excerpt %}
-			<description><![CDATA[{{ post.excerpt }}]]></description>
+			<description><![CDATA[{{ post.excerpt | xml_escape }}]]></description>
 			{% else %}
-			<description><![CDATA[{{ post.content }}]]></description>
+			<description><![CDATA[{{ post.content | xml_escape }}]]></description>
 			{% endif %}
 			<link>{{ site.url }}{{ post.url }}</link>
 			<guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
