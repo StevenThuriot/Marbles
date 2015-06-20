@@ -13,7 +13,7 @@ exclude: [README.md, LICENSE, vendor, Gemfile]
 
 gems:
   - jekyll-sitemap
-
+  - jekyll-minifier
 
 
 # ########################### #
@@ -23,7 +23,9 @@ gems:
 name: Your Jekyll Site
 description: Blogging about things
 meta_description: Blogging about things on your new Jekyll site
-url: http://yourblog-domain.com
+url: localhost:4000
+scheme: http #mainly used for xml feeds
+
 
 logo: false
 cover: false

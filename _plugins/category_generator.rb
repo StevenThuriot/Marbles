@@ -19,7 +19,7 @@ module Jekyll
       self.data['slug'] = slug
       self.data['category'] = category
       self.data['dir'] = dir
-      self.data['subscriptionUrl'] = site.config['url'] + '/' + (site.config['category_dir'] || 'categories') + '/' + slug + '/rss/'
+      self.data['subscriptionUrl'] = '//' + site.config['url'] + '/' + (site.config['category_dir'] || 'categories') + '/' + slug + '/rss/'
     end
   end
 

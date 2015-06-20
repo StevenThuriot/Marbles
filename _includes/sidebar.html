@@ -12,13 +12,14 @@
 
         <div class="blog-links">
             {% for link in site.data.navigation %}
-            {% capture pageUrl %}{{link.url}}/index.html{% endcapture %}
-            <a class="fa fa-{{ link.icon }}{% if pageUrl == page.url %} current-orb{% endif %}" role="presentation" href="{{ link.url }}" {% if link.target %}target="{{link.target}}"{% endif %} title="{{ link.name }}"></a>
+            {% capture pageUrl %}/{{link.url | upcase}}/INDEX.HTML{% endcapture %}
+            {% capture currentUrl %}{{page.url | upcase }}{% endcapture %}
+            <a class="fa fa-{{ link.icon }}{% if pageUrl == currentUrl %} current-orb{% endif %}" role="presentation" href="/{{ link.url }}" {% if link.target %}target="{{link.target}}"{% endif %} title="{{ link.name }}"></a>
             {% endfor %}
             {% if subscription %}
             <a class="fa fa-rss" role="presentation" href="{{ subscriptionUrl }}" target="_blank" title="{{ language.subscribeTo }} {{ subscription }}"></a>
             {% else %}
-            <a class="fa fa-rss" role="presentation" href="{{ site.url }}/rss/" target="_blank" title="{{ language.subscribe }}"></a>
+            <a class="fa fa-rss" role="presentation" href="/rss" target="_blank" title="{{ language.subscribe }}"></a>
             {% endif %}
         </div>
     </nav>
