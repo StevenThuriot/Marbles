@@ -29,9 +29,9 @@ templateType: author
         <h2 class="author-bio">{{ author.bio }}</h2>
         
         <div class="author-meta">
-            {% if author.location %}<span class="author-location icon-location">{{ author.location }}</span>{% endif %}
-            {% if author.website %}<span class="author-link icon-link"><a href="{{ author.website }}">{{author.website}}</a></span>{% endif %}
-            <span class="author-stats"><i class="icon-stats"></i> {{ page.posts.size}} post{% if page.posts.size != 1 %}s{% endif %}</span>
+            {% if author.location %}<span class="author-location fa fa-map-marker">{{ author.location }}</span>{% endif %}
+            {% if author.website %}<span class="author-link fa fa-link"><a href="{{ author.website }}">{{author.website}}</a></span>{% endif %}
+            <span class="author-stats"><i class="fa fa-bar-chart"></i> {{ page.posts.size}} post{% if page.posts.size != 1 %}s{% endif %}</span>
         </div>
     </section>
         

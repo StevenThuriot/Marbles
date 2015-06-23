@@ -6,8 +6,6 @@ templateType: tag
 {% assign subscription = page.category | titleize %}
 {% assign subscriptionUrl = page.subscriptionUrl %}
 
-{% include sidebar.html %}
-
 {% capture slugCategory %}{{page.category | slugify }}{% endcapture %}
 {% if site.data.tags[slugCategory].cover %}
     {% assign cover = site.data.tags[slugCategory].cover %}
@@ -15,15 +13,13 @@ templateType: tag
     {% assign cover = site.cover %}
 {% endif %}
 
+{% assign orbsCover = cover %}
+{% include sidebar.html %}
+
 {% if site.data.tags[slugCategory].title %}
     {% assign title = site.data.tags[slugCategory].title %}
 {% else %}
     {% capture title %}{{ page.category | titleize }}{% endcapture %}
-{% endif %}
-
-
-{% if cover %}
-<div class="main-header post-head" style="background-image: url({{ cover }})"></div>
 {% endif %}
 
 <main class="narrow-content" role="main">

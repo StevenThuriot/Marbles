@@ -50,9 +50,12 @@ subCover: true
             {% assign authorSlug = false %}
         {% endif %}
         
-        <footer class="post-footer{% if author and author.cover %} with-cover" style="background-image: url({{ author.cover }}){% endif %}">
         {% if authorSlug %}
             {% assign author = site.data.authors[authorSlug] %}
+        {% endif %}
+        
+        <footer class="post-footer{% if author and author.cover %} with-cover" style="background-image: url({{ author.cover }}){% endif %}">
+        {% if authorSlug %}
             {% if author %}
             {% if author.image %}
             <figure class="author-image">
@@ -71,8 +74,8 @@ subCover: true
                 {% endif %}
                 
                 <div class="author-meta">
-                    {% if author.location %}<span class="author-location icon-location">{{ author.location }}</span>{% endif %}
-                    {% if author.website %}<span class="author-link icon-link"><a href="{{ author.website }}">{{ author.website }}</a></span>{% endif %}
+                    {% if author.location %}<span class="author-location fa fa-map-marker">{{ author.location }}</span>{% endif %}
+                    {% if author.website %}<span class="author-link fa fa-link"><a href="{{ author.website }}">{{ author.website }}</a></span>{% endif %}
                 </div>
             </section>
         {% endif %}   
