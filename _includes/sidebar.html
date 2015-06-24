@@ -12,8 +12,8 @@
 
         <div class="blog-links">
             {% for link in site.data.navigation %}
-            {% capture pageUrl %}/{{link.url | upcase}}/INDEX.HTML{% endcapture %}
-            {% capture currentUrl %}{{page.url | upcase }}{% endcapture %}
+            {% capture pageUrl %}{{link.url | upcase}}{% endcapture %}
+            {% capture currentUrl %}{{ page.url | remove:'index.html' | strip_slash | upcase }}{% endcapture %}
             <a class="fa fa-{{ link.icon }}{% if pageUrl == currentUrl %} current-orb{% endif %}" role="presentation" href="/{{ link.url }}" {% if link.target %}target="{{link.target}}"{% endif %} title="{{ link.name }}"></a>
             {% endfor %}
             {% if subscription %}
