@@ -1,4 +1,7 @@
 language: ruby
+branches:
+  only:
+  - master # only take into account 'master' branch
 rvm:
   - 2.1
 script:
