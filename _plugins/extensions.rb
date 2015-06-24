@@ -3,6 +3,14 @@ module Jekyll
       
     def titleize(value)
         value.split(/(\W)/).map(&:capitalize).join
+    end  
+      
+    # Removes trailing forward slash from a string for easily appending url segments
+    def strip_slash(input)
+      if input =~ /(.+)\/$|^\/$/
+        input = $1
+      end
+      input
     end
       
     def expand_urls(input, url='', scheme='')

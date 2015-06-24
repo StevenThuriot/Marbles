@@ -7,6 +7,7 @@
 
     <title>{{ site.name }} &mdash; {{ site.description }}</title>
     <meta name="description" content="{{ site.meta_description }}" />
+  <link rel="canonical" href="{{ site.scheme }}://{{ site.url }}{{ page.url | remove:'index.html' | strip_slash }}">
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
