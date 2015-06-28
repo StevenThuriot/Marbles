@@ -5,8 +5,8 @@
 	<channel>
 		<title>{{ site.name | xml_escape }}</title>
 		<description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>		
-		<link>{{ site.scheme }}://{{ site.url }}</link>
-		<atom:link href="{{ site.scheme }}:{% absolute rss %}" rel="self" type="application/rss+xml" />
+		<link>{{ site.url }}</link>
+		<atom:link href="{% absolute rss %}" rel="self" type="application/rss+xml" />
 		{% for post in site.posts limit:10 %}
 			<item>
 				<title>{{ post.title | xml_escape }}</title>
@@ -14,13 +14,13 @@
 					<dc:creator>{{ post.author.name | xml_escape }}</dc:creator>
 				{% endif %}        
 				{% if post.excerpt %}
-					<description>{{ post.excerpt | expand_urls: site.url,site.scheme | xml_escape }}</description>
+					<description>{{ post.excerpt | expand_urls: site.url | xml_escape }}</description>
 				{% else %}
-					<description>{{ post.content | expand_urls: site.url,site.scheme | xml_escape }}</description>
+					<description>{{ post.content | expand_urls: site.url | xml_escape }}</description>
 				{% endif %}
 				<pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
-				<link>{{ site.scheme }}:{% absolute {{ post.url }} %}</link>
-				<guid isPermaLink="true">{{ site.scheme }}:{% absolute {{ post.url }} %}</guid>
+				<link>{% absolute {{ post.url }} %}</link>
+				<guid isPermaLink="true">{% absolute {{ post.url }} %}</guid>
 			</item>
 		{% endfor %}
 	</channel>

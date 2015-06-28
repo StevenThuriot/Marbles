@@ -6,8 +6,8 @@ module Jekyll
     def initialize(site, base, category, slug, posts, index, pageCount)
       @site = site
       @base = base
-        @dir  = File.join((site.config['category_dir'] || 'categories'), slug)
-      @name = 'index.html'      
+      @dir  = File.join((site.config['category_dir'] || 'categories'), slug)
+      @name = 'index.html'    
         
       if index != 0          
           path = site.config['paginate_path']
@@ -19,7 +19,7 @@ module Jekyll
       self.data['slug'] = slug
       self.data['category'] = category
       self.data['dir'] = dir
-      self.data['subscriptionUrl'] = '//' + site.config['url'] + '/' + (site.config['category_dir'] || 'categories') + '/' + slug + '/rss/'
+      self.data['subscriptionUrl'] = site.config['baseurl'] + (site.config['category_dir'] || 'categories') + '/' + slug + '/rss/'
     end
   end
 
@@ -29,7 +29,7 @@ module Jekyll
     def initialize(site, base, category, slug, posts)
       @site = site
       @base = base
-        @dir  = File.join((site.config['category_dir'] || 'categories'), slug)
+      @dir  = File.join((site.config['category_dir'] || 'categories'), slug)
       @name = 'rss/index.xml'
      
       self.process(@name)
@@ -52,27 +52,29 @@ module Jekyll
                     "total_posts" => postCount,
                     "total_pages" => pageCount }
       
+      prefix = self.config['category_dir'] || 'categories'
+        
       if  index != 0
           paginator['previous_page'] = index
-          path = self.config['paginate_path']
+          path = '/' + File.join(prefix, slug, self.config['paginate_path'])
           paginator['previous_page_path'] = path.sub(':num', (index).to_s)
       end
       
       if index != (pageCount - 1)
           paginator['next_page'] = index+2
-          path = self.config['paginate_path']
+          path = '/' + File.join(prefix, slug, self.config['paginate_path'])
           paginator['next_page_path'] = path.sub(':num', (index+2).to_s)
       end 
     
       payload =  site_payload
       payload['paginator'] = paginator
         
-      index = CategoryIndex.new(self, self.source, category, slug, posts, index, pageCount)
-      index.render(self.layouts, payload)
-      index.write(self.dest)
+      indexPage = CategoryIndex.new(self, self.source, category, slug, posts, index, pageCount)
+      indexPage.render(self.layouts, payload)
+      indexPage.write(self.dest)
         
       # Record that this page has been added, otherwise Site::cleanup will remove it.
-      self.pages << index
+      self.pages << indexPage
     end
 
     def write_category_feed(category, slug, posts)  

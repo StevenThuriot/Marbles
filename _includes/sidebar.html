@@ -6,7 +6,7 @@
     <nav id="site-head">
         {% if site.logo %}
         <div id="site-head-logo">
-            <a id="blog-logo" href="//{{ site.url }}"><img src="{{ site.logo }}" alt="{{ site.name }}" title="{{ language.home }}"></a>
+            <a id="blog-logo" href="{{ site.url }}"><img src="{{ site.logo }}" alt="{{ site.name }}" title="{{ language.home }}"></a>
         </div>
         {% endif %}
 
@@ -14,12 +14,12 @@
             {% for link in site.data.navigation %}
             {% capture pageUrl %}{{ site.baseurl }}{{link.url | upcase}}{% endcapture %}
             {% capture currentUrl %}{{ page.url | remove:'index.html' | strip_slash | upcase }}{% endcapture %}
-            <a class="fa fa-{{ link.icon }}{% if pageUrl == currentUrl %} current-orb{% endif %}" role="presentation" href="{{ site.baseurl }}{{ link.url }}" {% if link.target %}target="{{link.target}}"{% endif %} title="{{ link.name }}"></a>
+            <a class="fa fa-{{ link.icon }}{% if pageUrl == currentUrl %} current-orb{% endif %}" role="presentation" href="{% relative {{ link.url }} %}" {% if link.target %}target="{{link.target}}"{% endif %} title="{{ link.name }}"></a>
             {% endfor %}
             {% if subscription %}
-            <a class="fa fa-rss" role="presentation" href="{{ subscriptionUrl }}" target="_blank" title="{{ language.subscribeTo }} {{ subscription }}"></a>
+            <a class="fa fa-rss" role="presentation" href="{% relative {{ subscriptionUrl }} %}" target="_blank" title="{{ language.subscribeTo }} {{ subscription }}"></a>
             {% else %}
-            <a class="fa fa-rss" role="presentation" href="{{ site.baseurl }}rss" target="_blank" title="{{ language.subscribe }}"></a>
+            <a class="fa fa-rss" role="presentation" href="{% relative 'rss' %}" target="_blank" title="{{ language.subscribe }}"></a>
             {% endif %}
         </div>
     </nav>

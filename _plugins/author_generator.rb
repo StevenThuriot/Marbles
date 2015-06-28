@@ -6,8 +6,8 @@ module Jekyll
     def initialize(site, base, slug, author, posts, index, pageCount)
       @site = site
       @base = base
-      @dir  = File.join((site.config['author_dir'] || 'authors'), slug)
-      @name = 'index.html'      
+      @name = 'index.html'   
+      @dir  = File.join((site.config['author_dir'] || 'authors'), slug)    
         
       if index != 0          
           path = site.config['paginate_path']
@@ -20,7 +20,7 @@ module Jekyll
       self.data['author'] = author
       self.data['dir'] = dir
       self.data['title'] = "#{author['name']}"
-      self.data['subscriptionUrl'] = '//' + site.config['url'] + '/' + (site.config['author_dir'] || 'authors') + '/' + slug + '/rss/'
+      self.data['subscriptionUrl'] = site.config['baseurl']  + (site.config['author_dir'] || 'authors') + '/' + slug + '/rss/'
     end
   end
 
@@ -54,27 +54,29 @@ module Jekyll
                     "total_posts" => postCount,
                     "total_pages" => pageCount }
       
+      prefix = self.config['author_dir'] || 'authors'
+        
       if  index != 0
           paginator['previous_page'] = index
-          path = self.config['paginate_path']
+          path = '/' + File.join(prefix, slug, self.config['paginate_path'])
           paginator['previous_page_path'] = path.sub(':num', (index).to_s)
       end
       
       if index != (pageCount - 1)
           paginator['next_page'] = index+2
-          path = self.config['paginate_path']
+          path = '/' + File.join(prefix, slug, self.config['paginate_path'])
           paginator['next_page_path'] = path.sub(':num', (index+2).to_s)
       end 
     
       payload =  site_payload
       payload['paginator'] = paginator
         
-      index = AuthorIndex.new(self, self.source, slug, author, posts, index, pageCount)
-      index.render(self.layouts, payload)
-      index.write(self.dest)
+      indexPage = AuthorIndex.new(self, self.source, slug, author, posts, index, pageCount)
+      indexPage.render(self.layouts, payload)
+      indexPage.write(self.dest)
         
       # Record that this page has been added, otherwise Site::cleanup will remove it.
-      self.pages << index
+      self.pages << indexPage
     end
 
     def write_author_feed(slug, author, posts)  

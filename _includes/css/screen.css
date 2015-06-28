@@ -1744,6 +1744,9 @@ a.current-orb:hover  {
 .author-meta {
     margin: 1.6rem 0;
 }
+.author-meta .fa:before {
+  margin: 0 0.3em 0 0;
+}
 /* Location, website, and link */
 .author-profile .author-meta {
     margin: 2rem 0;

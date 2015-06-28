@@ -5,24 +5,24 @@
 	<channel>
 		<title><![CDATA[{{ site.name }} &mdash; {{ page.category }}]]></title>
 		<description><![CDATA[{{ site.description }}]]></description>
-		<link>{{ site.scheme }}://{{ site.url }}</link>
-		<link href="{{ site.scheme }}:{% absolute {{ page.dir }}/ %}" rel="self" type="application/rss+xml" />
+		<link>{{ site.url }}</link>
+		<link href="{% absolute {{ page.dir }}/ %}" rel="self" type="application/rss+xml" />
 		<ttl>60</ttl>
 		{% for post in page.posts limit:10 %}
 		<item>
 			<title><![CDATA[{{ post.title }}]]></title>
 			{% if post.excerpt %}
-			<description><![CDATA[{{ post.excerpt | expand_urls: site.url,site.scheme | xml_escape }}]]></description>
+			<description><![CDATA[{{ post.excerpt | expand_urls: site.url | xml_escape }}]]></description>
 			{% else %}
-			<description><![CDATA[{{ post.content | expand_urls: site.url,site.scheme | xml_escape }}]]></description>
+			<description><![CDATA[{{ post.content | expand_urls: site.url | xml_escape }}]]></description>
 			{% endif %}
-			<link>{{ site.scheme }}:{% absolute {{ post.url }} %}</link>
-			<guid isPermaLink="true">{{ site.scheme }}:{% absolute {{ post.url }} %}</guid>
+			<link>{% absolute {{ post.url }} %}</link>
+			<guid isPermaLink="true">{% absolute {{ post.url }} %}</guid>
 			<pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
 			{% if post.cover %}
 			<media:content url="{{ post.cover }}" medium="image"/>
 			{% endif %}
-			<content:encoded><![CDATA[{{ post.content | expand_urls: site.url,site.scheme | markdownify }}]]></content:encoded>
+			<content:encoded><![CDATA[{{ post.content | expand_urls: site.url | markdownify }}]]></content:encoded>
 		</item>
 		{% endfor %}
 	</channel>

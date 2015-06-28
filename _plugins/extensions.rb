@@ -13,17 +13,12 @@ module Jekyll
       input
     end
       
-    def expand_urls(input, url='', scheme='')
-      url ||= ''
-      if scheme.to_s.empty?
-          scheme = "//" 
-      else
-          scheme = scheme + "://" 
-      end
-      input.gsub /(\s+(href|src)\s*=\s*["|'](?!\/\/){1})(\/[^\"'>]*)/ do
-        $1+scheme+url+$3
-      end
+  def expand_urls(input, url='')
+    url ||= '/'
+    input.gsub /(\s+(href|src|poster)\s*=\s*["|']{1})(\/[^\/>]{1}[^\"'>]*)/ do
+      $1+url+$3
     end
+  end
 
   end
 end
