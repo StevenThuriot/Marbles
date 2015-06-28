@@ -19,7 +19,7 @@
             {% if subscription %}
             <a class="fa fa-rss" role="presentation" href="{% relative {{ subscriptionUrl }} %}" target="_blank" title="{{ language.subscribeTo }} {{ subscription }}"></a>
             {% else %}
-            <a class="fa fa-rss" role="presentation" href="{% relative 'rss' %}" target="_blank" title="{{ language.subscribe }}"></a>
+            <a class="fa fa-rss" role="presentation" href="{% relative rss %}" target="_blank" title="{{ language.subscribe }}"></a>
             {% endif %}
         </div>
     </nav>
