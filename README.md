@@ -6,6 +6,3 @@
     * Including Font Awesome Support
 * Code highlighting
 * Comments using Disqus.
-
-
-_While open sourced, I would appreciate it if you don't just copy it and use it on your site as long as I'm running it on mine. Please find the courtesy to at least ask first._
