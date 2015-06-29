@@ -5,7 +5,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+    {% if page and page.title != "Home" %}
+    <title>{{ page.title }} &mdash; {{ site.name }}</title>
+    {%else %}
     <title>{{ site.name }} &mdash; {{ site.description }}</title>
+    {% endif %}
     <meta name="description" content="{{ site.meta_description }}" />
     <link rel="canonical" href="{{ site.url }}{{ page.url | remove:'index.html' | strip_slash }}">
 
