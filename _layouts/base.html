@@ -15,7 +15,9 @@
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#434a4d">
+    {% if site.sidebar %}
+    <meta name="theme-color" content="{{ site.sidebar }}">
+    {% endif %}
     {% if site.logo %}
     <link rel="icon" sizes="192x192" href="{{ site.logo }}">
     {% endif %}
@@ -30,7 +32,7 @@
 	<footer class="site-footer clearfix{% if page.subCover %} wide{% endif %}">
 		<section class="copyright"><a href="{{ site.url }}">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }}</section>
         <p />
-        <section class="poweredby"><a href="https://github.com/StevenThuriot/Marbles" target="_blank">Marbles</a> &mdash; Designed with <i class="fa fa-heart"></i> by <a href="https://github.com/StevenThuriot" target="_blank">Steven Thuriot</a></section>
+        <section class="poweredby"><a href="https://github.com/StevenThuriot/Marbles" target="_blank">Marbles</a> &mdash; Designed with <i class="fa fa-heart"></i> by <a href="http://steven.thuriot.be/" target="_blank">Steven Thuriot</a></section>
 	</footer>
     
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>

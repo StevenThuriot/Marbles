@@ -456,7 +456,9 @@ th {
    1. Icons - Sets up the icon font and respective classes
    ========================================================================== */
 
-
+.poweredby .fa-heart {
+  color: #EFB0B1;
+}
 
 
 
@@ -1344,7 +1346,7 @@ body:not(.post-template) .post-title {
 #orbs-bar {
     position: fixed;
     height: 100%;
-    background-color: #434a4d;  
+    background-color: $sidebar-color;  
     width: 8%;
 }
 
@@ -1355,7 +1357,7 @@ body:not(.post-template) .post-title {
         width: 6px;
         height: 100%;
         margin: 0 -3px 0 0;
-        background: #33393b;
+        background: $marbles-color;
         content: "";
     }
 
@@ -1380,12 +1382,12 @@ body:not(.post-template) .post-title {
     height: 106px;
     margin-bottom: 22px;
     border-radius: 53px;
-    background: #33393b;
+    background: $marbles-color;
     transition: all ease 0.3s;
 }
 
 #site-head-logo:hover {
-    background: #15b8d6;
+    background: $marble-hover-color;
 }
 
 #blog-logo {
@@ -1413,21 +1415,21 @@ body:not(.post-template) .post-title {
     line-height: 32px;
     border-radius: 15px;
     margin: 0 auto 10px;
-    background: #33393b;
+    background: $marbles-color;
     text-decoration: none;
     color: #fff;
     transition: all ease 0.3s;
 }
 
 .blog-links a:hover {
-    background: #15b8d6;
+    background: $marble-hover-color;
 }
 
 a.current-orb {
-    color: #00bfff;
+    color: $current-marble-color;
 }
 a.current-orb:hover  {
-    color: #fff;
+    color: $current-marble-hover-color;
 }
 
 

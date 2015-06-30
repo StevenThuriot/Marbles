@@ -11,6 +11,9 @@ category_dir: tag
 
 exclude: [README.md, LICENSE, vendor, Gemfile]
 
+sass:
+    style: :compressed
+    
 gems:
   - jekyll-sitemap
   - jekyll-minifier
@@ -31,5 +34,15 @@ cover: false
 disqus: false
 author: author-slug
 language: English
+
+
+#Colors
+sidebar: '#434a4d'
+
+marble: '#33393b'
+marbleHover: '#15b8d6'
+
+currentMarble: '#00bfff'
+currentMarbleHover: '#fff'
 
 # ########################### #
