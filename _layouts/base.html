@@ -7,7 +7,7 @@
 
     {% if page and page.title != "Home" %}
     <title>{{ page.title }} &mdash; {{ site.name }}</title>
-    {%else %}
+    {% else %}
     <title>{{ site.name }} &mdash; {{ site.description }}</title>
     {% endif %}
     <meta name="description" content="{{ site.meta_description }}" />
@@ -27,7 +27,7 @@
 </head>
 <body class="{% if paginator and paginator.page != 1 %}archive-template{% else %}{% if page.templateType %}{{ page.templateType }}{% else %}home{% endif %}-template{% endif %}">
 
-    {{ content | expand_urls: site.url }}        
+    {{ content | expand_urls: site.url }}
 	
 	<footer class="site-footer clearfix{% if page.subCover %} wide{% endif %}">
 		<section class="copyright"><a href="{{ site.url }}">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }}</section>

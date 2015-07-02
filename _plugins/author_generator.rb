@@ -67,6 +67,11 @@ module Jekyll
           path = '/' + File.join(prefix, slug, self.config['paginate_path'])
           paginator['next_page_path'] = path.sub(':num', (index+2).to_s)
       end 
+        
+      if index == 1
+        paginator['previous_page'] = 1
+        paginator['previous_page_path'] = '/' + File.join(prefix, slug)
+      end
     
       payload =  site_payload
       payload['paginator'] = paginator
@@ -76,7 +81,7 @@ module Jekyll
       indexPage.write(self.dest)
         
       # Record that this page has been added, otherwise Site::cleanup will remove it.
-      self.pages << indexPage
+      self.static_files << indexPage
     end
 
     def write_author_feed(slug, author, posts)  
