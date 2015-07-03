@@ -24,8 +24,7 @@ module Jekyll
       if title && title.has_key?("title")
           self.data['title'] = "#{title["title"]}"
       else
-          prettySlug = slug.split(/(\W)/).map(&:capitalize).join
-          self.data['title'] = "#{prettySlug}"
+          self.data['title'] = "#{category}"
       end
       
       
