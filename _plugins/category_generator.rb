@@ -19,6 +19,17 @@ module Jekyll
       self.data['slug'] = slug
       self.data['category'] = category
       self.data['dir'] = dir
+      
+      title = site.data['tags'][slug]
+      if title && title.has_key?("title")
+          self.data['title'] = "#{title["title"]}"
+      else
+          prettySlug = slug.split(/(\W)/).map(&:capitalize).join
+          self.data['title'] = "#{prettySlug}"
+      end
+      
+      
+      
       self.data['subscriptionUrl'] = site.config['baseurl'] + (site.config['category_dir'] || 'categories') + '/' + slug + '/rss/'
     end
   end
