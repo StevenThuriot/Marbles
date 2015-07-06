@@ -20,8 +20,16 @@ module Jekyll
       path = rawPath.gsub(/^("|')|("|')$/, '')
 
       config = context.registers[:site].config
+      useScheme = config['useScheme'];
+      
+      url = config['url']
+      if !useScheme
+          url = url.sub(/^https?\:\/\//, '//')
+      end
+      
+      
       #fix double slashes
-      "#{config['url']}#{config['baseurl']}#{path}".gsub(/([^:])\/\//, '\1/').strip
+      "#{url}#{config['baseurl']}#{path}".gsub(/([^:])\/\//, '\1/').strip
     end
   end  
 

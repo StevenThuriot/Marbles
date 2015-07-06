@@ -27,12 +27,12 @@ description: Blogging about things
 meta_description: Blogging about things on your new Jekyll site
 url: http://localhost:4000
 
-
 logo: false
 cover: false
 disqus: false
 author: author-slug
 language: English
+useScheme: false
 
 
 #Colors

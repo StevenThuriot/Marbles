@@ -13,8 +13,13 @@ module Jekyll
       input
     end
       
-  def expand_urls(input, url='')
-    url ||= '/'
+  def expand_urls(input, url='', useScheme=true)
+      url ||= '/'
+      
+      if !useScheme
+          url = url.sub(/^https?\:\/\//, '//')
+      end
+      
     input.gsub /(\s+(href|src|poster)\s*=\s*["|']{1})(\/[^\/>]{1}[^\"'>]*)/ do
       $1+url+$3
     end
