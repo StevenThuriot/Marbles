@@ -3,7 +3,7 @@ module Jekyll
     
   class AuthorIndex < Page
 
-    def initialize(site, base, slug, author, posts, index, pageCount)
+    def initialize(site, base, slug, author, posts, index, pageCount, postCount)
       @site = site
       @base = base
       @name = 'index.html'   
@@ -19,6 +19,7 @@ module Jekyll
       self.data['slug'] = slug
       self.data['author'] = author
       self.data['dir'] = dir
+      self.data['postCount'] = postCount
       self.data['title'] = "#{author['name']}"
       self.data['subscriptionUrl'] = site.config['baseurl']  + (site.config['author_dir'] || 'authors') + '/' + slug + '/rss/'
     end
@@ -76,7 +77,7 @@ module Jekyll
       payload =  site_payload
       payload['paginator'] = paginator
         
-      indexPage = AuthorIndex.new(self, self.source, slug, author, posts, index, pageCount)
+      indexPage = AuthorIndex.new(self, self.source, slug, author, posts, index, pageCount, postCount)
       indexPage.render(self.layouts, payload)
       indexPage.write(self.dest)
         

@@ -18,24 +18,24 @@ templateType: author
     <div class="extra-pagination inner">
         {% include pagination.html %}
     </div>
-    
+
     <section class="author-profile inner">
-        {% if author.image %}            
+        {% if author.image %}
         <figure class="author-image">
             <div class="img" style="background-image: url({{ author.image }})"><span class="hidden">{{ author.name }}{{ language.picture }}</span></div>
         </figure>
         {% endif %}
         <h1 class="author-title">{{ author.name }}</h1>
         <h2 class="author-bio">{{ author.bio }}</h2>
-        
+
         <div class="author-meta">
             {% if author.location %}<span class="author-location fa fa-map-marker">{{ author.location }}</span>{% endif %}
             {% if author.website %}<span class="author-link fa fa-link"><a href="{{ author.website }}">{{author.website}}</a></span>{% endif %}
-            <span class="author-stats"><i class="fa fa-bar-chart"></i> {{ page.posts.size}} post{% if page.posts.size != 1 %}s{% endif %}</span>
+            <span class="author-stats"><i class="fa fa-bar-chart"></i> {{ page.postCount }} post{% if page.postCount != 1 %}s{% endif %}</span>
         </div>
     </section>
-        
-  {% for post in paginator.posts %}    
+
+  {% for post in paginator.posts %}
     <article class="post">
         <header class="post-header">
             <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
@@ -43,12 +43,12 @@ templateType: author
         <section class="post-excerpt">
             {{ post.excerpt | truncatewords: 30 | markdownify }} <a class="read-more" href="{{ post.url }}">&raquo;</a>
         </section>
-        <footer class="post-meta">            
+        <footer class="post-meta">
             {% include categories.html %}
-            <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date: "%d %B %Y" }}</time>  
+            <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date: "%d %B %Y" }}</time>
         </footer>
     </article>
   {% endfor %}
-    
+
   {% include pagination.html %}
 </main>
