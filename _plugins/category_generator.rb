@@ -127,9 +127,11 @@ module Jekyll
                         gsub(/^\-|\-$/i, '').
                         # Downcase
                         downcase
+            
+            posts = posts.reverse
               
             self.write_category_feed(category, slug, posts)  
-            
+              
             if self.config['paginate']
                 slicedPosts = posts.each_slice(5).to_a             
                 slicedPosts.each_with_index do |slice, i|

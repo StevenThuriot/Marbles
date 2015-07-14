@@ -110,9 +110,11 @@ module Jekyll
           
           authorHash.each do |slug, posts|              
             author = self.data['authors'][slug]     
+            
+            posts = posts.reverse
               
             self.write_author_feed(slug, author, posts)  
-            
+                          
             if self.config['paginate']
                 slicedPosts = posts.each_slice(5).to_a             
                 slicedPosts.each_with_index do |slice, i|
