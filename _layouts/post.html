@@ -5,8 +5,6 @@ templateType: post
 subCover: true
 ---
 
-{% assign language = site.data.language[site.language] %}
-
 {% if page.cover %}
 <div class="main-header post-head" style="background-image: url({{ page.cover }})"></div>
 {% endif %}
@@ -19,7 +17,7 @@ subCover: true
             <h1 class="post-title">{{ page.title }}</h1>
             <section class="post-meta">                
                 <time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date: "%d %B %Y" }}</time>               
-                {% if page.categories.size > 0 %} {{ language.about }} {% endif %}
+                {% if page.categories.size > 0 %} {% translate about %} {% endif %}
                 {% assign categories = page.categories | sort %}
                 {% for category in categories %}
                 <a href="/{{ site.category_dir || 'categories' }}/{{ category | slugify }}/">{% resolve_category {{ category }} %}</a>{% if forloop.last == false %}, {% endif %}
@@ -60,7 +58,7 @@ subCover: true
             {% if author.image %}
             <figure class="author-image">
                 <a class="img" href="/{{ site.author_dir || 'authors' }}/{{ authorSlug }}" style="background-image: url({{ author.image }})">
-                <span class="hidden">{{ author.name }}{{ language.picture }}</span></a>
+                <span class="hidden">{% translate picture►{{ author.name }} %}</span></a>
             </figure>
             {% endif %}
             
@@ -70,7 +68,7 @@ subCover: true
                 {% if author.bio %}
                     <p>{{ author.bio }}</p>
                 {% else %}
-                    <p><a href="/{{ site.author_dir || 'authors' }}/{{ authorSlug }}">{{ language.readMoreByThisAuthor }}</a>.</p>
+                    <p><a href="/{{ site.author_dir || 'authors' }}/{{ authorSlug }}">{% translate readMoreByThisAuthor %}</a>.</p>
                 {% endif %}
                 
                 <div class="author-meta">

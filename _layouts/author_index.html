@@ -22,7 +22,7 @@ templateType: author
     <section class="author-profile inner">
         {% if author.image %}
         <figure class="author-image">
-            <div class="img" style="background-image: url({{ author.image }})"><span class="hidden">{{ author.name }}{{ language.picture }}</span></div>
+            <div class="img" style="background-image: url({{ author.image }})"><span class="hidden">{% translate picture►{{ author.name }} %}</span></div>
         </figure>
         {% endif %}
         <h1 class="author-title">{{ author.name }}</h1>
@@ -31,7 +31,7 @@ templateType: author
         <div class="author-meta">
             {% if author.location %}<span class="author-location fa fa-map-marker">{{ author.location }}</span>{% endif %}
             {% if author.website %}<span class="author-link fa fa-link"><a href="{{ author.website }}">{{author.website}}</a></span>{% endif %}
-            <span class="author-stats"><i class="fa fa-bar-chart"></i> {{ paginator.total_posts }} post{% if paginator.total_posts != 1 %}s{% endif %}</span>
+            <span class="author-stats"><i class="fa fa-bar-chart"></i> {% if paginator.total_posts != 1 %}{% translate post►{{ paginator.total_posts }} %}{% else %}{% translate posts►{{ paginator.total_posts }} %}{% endif %}</span>
         </div>
     </section>
 

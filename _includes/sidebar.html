@@ -2,11 +2,10 @@
     {% assign orbsCover = site.cover %}
 {% endif %}
 <header id="orbs-bar" class="sidebar{% if page.subCover %} no-cover{% else %} wide{% if orbsCover %}" style="background-image: url('{{ orbsCover }}'){% endif %}{% endif %}">
-	{% assign language = site.data.language[site.language] %}
     <nav id="site-head">
         {% if site.logo %}
         <div id="site-head-logo">
-            <a id="blog-logo" href="{{ site.baseurl }}"><img src="{{ site.logo }}" alt="{{ site.name }}" title="{{ language.home }}"></a>
+            <a id="blog-logo" href="{{ site.baseurl }}"><img src="{{ site.logo }}" alt="{{ site.name }}" title="{% translate home %}"></a>
         </div>
         {% endif %}
 
@@ -17,9 +16,9 @@
             <a class="fa fa-{{ link.icon }}{% if pageUrl == currentUrl %} current-orb{% endif %}" role="presentation" href="{% absolute {{ link.url }} %}" {% if link.target %}target="{{link.target}}"{% endif %} title="{{ link.name }}"></a>
             {% endfor %}
             {% if subscription %}
-            <a class="fa fa-rss" role="presentation" href="{% absolute {{ subscriptionUrl }} %}" target="_blank" title="{{ language.subscribeTo }} {{ subscription }}"></a>
+            <a class="fa fa-rss" role="presentation" href="{% absolute {{ subscriptionUrl }} %}" target="_blank" title="{% translate subscribeTo►{{ subscription }} %}"></a>
             {% else %}
-            <a class="fa fa-rss" role="presentation" href="{% absolute rss %}" target="_blank" title="{{ language.subscribe }}"></a>
+            <a class="fa fa-rss" role="presentation" href="{% absolute rss %}" target="_blank" title="{% translate subscribe %}"></a>
             {% endif %}
         </div>
     </nav>

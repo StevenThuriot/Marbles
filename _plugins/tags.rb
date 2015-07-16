@@ -96,7 +96,7 @@ module Jekyll
     @sentence = nil
 
     def initialize(tag_name, text, tokens)
-      first,*rest = text.split(/#/)
+      first,*rest = text.split(/►/) #ascii 16
         
       @sentence = first.strip
       @markups = rest.map { |tag| tag.strip }
@@ -109,7 +109,12 @@ module Jekyll
       language = config['language'].downcase        
       translationData = site.data['language']
       translate = translationData[language]
-      sentence = translate[@sentence]
+                
+      sentence = translate[Liquid::Template.parse(@sentence).render(context).strip]
+    
+      if sentence.nil?
+          raise "Error processing input, unknown sentence '#{@sentence}'..."
+      end
         
       rendered = @markups.map { |markup| Liquid::Template.parse(markup).render(context).strip }
       

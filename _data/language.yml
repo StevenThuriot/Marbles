@@ -1,16 +1,20 @@
-English:
+english:
   home: Home
   subscribe: Subscribe
-  subscribeTo: Subscribe to
+  subscribeTo: Subscribe to %s
   about: "on"
   readMoreByThisAuthor: Read more posts by this author
-  picture: "'s Picture"
+  picture: "%s's Picture"
+  post: "%s post"
+  posts: "%s posts"
   
-Dutch:
+dutch:
   home: Start
   subscribe: Abonneer
-  subscribeTo: Abonneer op
+  subscribeTo: Abonneer op %s
   about: over  
   readMoreByThisAuthor: Lees meer berichten van deze auteur
-  picture: "'s Foto"
+  picture: "%s's Foto"
+  post: "%s post"
+  posts: "%s posts"
   
