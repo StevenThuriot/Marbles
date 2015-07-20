@@ -12,6 +12,7 @@
 * Code highlighting.
 * Comments using Disqus.
 * Multilanguage support.
+    * Easily add your own language to `_data/language.yml`
 * Extended `Author` and `Category` features
     * Pagination which supports Jekyll's default pagination system.
     * Custom slug, cover and additional information support

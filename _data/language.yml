@@ -7,6 +7,10 @@ english:
   picture: "%s's Picture"
   post: "%d post"
   posts: "%d posts"
+  newerPosts: Newer Posts
+  olderPosts: Older Posts
+  pageXofY: Page %s of %s
+  readMore: Read More
   
 dutch:
   home: Start
@@ -17,4 +21,8 @@ dutch:
   picture: "%s's Foto"
   post: "%d post"
   posts: "%d posts"
+  newerPosts: Nieuwere Posts
+  olderPosts: Oudere Posts
+  pageXofY: Pagina %s van %s
+  readMore: Lees meer
   
