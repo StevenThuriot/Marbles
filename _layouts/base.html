@@ -22,19 +22,19 @@
     <link rel="icon" sizes="192x192" href="{{ site.logo }}">
     {% endif %}
     <link rel="stylesheet" type="text/css" href="{% absolute /assets/css/screen.css %}" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css"  href="//fonts.googleapis.com/css?family=Lora:400,700,400italic%7CMontserrat:400,700">
 </head>
 <body class="{% if paginator and paginator.page != 1 %}archive-template{% else %}{% if page.templateType %}{{ page.templateType }}{% else %}home{% endif %}-template{% endif %}">
 
     {{ content | expand_urls: site.url, site.useScheme }}
-	
+
 	<footer class="site-footer clearfix{% if page.subCover %} wide{% endif %}">
 		<section class="copyright"><a href="{% absolute / %}">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }}</section>
         <p class="clearfix" />
         <section class="poweredby"><a href="https://github.com/StevenThuriot/Marbles" target="_blank">Marbles</a> &mdash; Designed with <i class="fa fa-heart"></i> by <a href="https://github.com/StevenThuriot" target="_blank">Steven Thuriot</a></section>
 	</footer>
-    
+
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="{% absolute /assets/js/jquery.fitvids.js %}"></script>
 
