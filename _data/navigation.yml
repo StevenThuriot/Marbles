@@ -1,0 +1,12 @@
+
+- name: Projects
+  icon: terminal
+  url: projects
+  
+- name: GitHub
+  icon: github-alt
+  url: GitHub
+  
+- name: Curriculum Vitae
+  icon: street-view
+  url: cv
