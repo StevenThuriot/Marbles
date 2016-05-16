@@ -18,7 +18,8 @@
 	
     <script type="text/javascript">
   WebFontConfig = {
-    google: { families: [ 'Montserrat:400,700:latin', 'Lora:700:latin' ] }
+    google: { families: [ 'Montserrat:400,700:latin', 'Lora:700:latin' ] },
+	custom: { families: [ 'FontAwesome' ], urls: [ '//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'] }  
   };
   (function() {
     var wf = document.createElement('script');
@@ -29,14 +30,9 @@
     s.parentNode.insertBefore(wf, s);
   })(); </script>
   
-    {% if site.sidebar %}
-    <meta name="theme-color" content="{{ site.sidebar }}">
-    {% endif %}
-    {% if site.logo %}
-    <link rel="icon" sizes="192x192" href="{{ site.logo }}">
-    {% endif %}
+    {% if site.sidebar %}<meta name="theme-color" content="{{ site.sidebar }}">{% endif %}
+    {% if site.logo %}<link rel="icon" sizes="192x192" href="{{ site.logo }}">{% endif %}
     <link rel="stylesheet" type="text/css" href="{% absolute /assets/css/screen.css %}" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">	
 </head>
 <body class="{% if paginator and paginator.page != 1 %}archive-template{% else %}{% if page.templateType %}{{ page.templateType }}{% else %}home{% endif %}-template{% endif %}">
 
